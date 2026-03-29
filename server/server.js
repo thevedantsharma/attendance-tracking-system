@@ -46,7 +46,7 @@ app.use('/api', limiter);
 connectDB();
 
 // Routes
-app.use('/api/auth/login', authRoutes);
+app.use('/api/auth', authRoutes);
 app.use('/api/classes', classRoutes);
 app.use('/api/attendance', attendanceRoutes);
 app.use('/api/admin', adminRoutes);
