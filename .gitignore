@@ -7,12 +7,27 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Node modules
 node_modules
+jspm_packages/
+
+# Build outputs
 dist
 dist-ssr
+build/Release
 *.local
 
-# Editor directories and files
+# Coverage
+coverage
+*.lcov
+.nyc_output
+
+# Env files
+.env
+.env.*
+!.env.example
+
+# Editor / OS
 .vscode/*
 !.vscode/extensions.json
 .idea
@@ -22,3 +37,24 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Cache
+.cache
+.parcel-cache
+.eslintcache
+.stylelintcache
+.npm
+
+# Frameworks
+.next
+.nuxt
+.svelte-kit
+.docusaurus
+.serverless
+.firebase/
+
+# Misc
+*.pid
+*.seed
+*.pid.lock
+report.*.json
