@@ -27,7 +27,6 @@ app.use(cors({
   credentials: true
 }));
 
-app.options('*', cors()); // for preflight
 
 // Security Middleware
 app.use(helmet());
