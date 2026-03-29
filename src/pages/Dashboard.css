@@ -1,0 +1,146 @@
+.dashboard-header {
+  margin-bottom: 2rem;
+}
+
+.dashboard-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.dashboard-subtitle {
+  color: var(--text-secondary);
+  font-size: 1rem;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: transform 0.2s;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent-primary);
+}
+
+.stat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.stat-icon {
+  color: var(--accent-primary);
+  background: rgba(139, 92, 246, 0.1);
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.stat-subtext {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.stat-subtext.positive {
+  color: var(--accent-success);
+}
+
+.stat-subtext.negative {
+  color: var(--accent-destructive);
+}
+
+.main-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.chart-panel h3, .list-panel h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.chart-container {
+  width: 100%;
+  height: 300px;
+}
+
+.defaulters-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.defaulter-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem;
+  border-radius: var(--radius-sm);
+  background: var(--bg-tertiary);
+  transition: background 0.2s;
+}
+
+.defaulter-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.defaulter-info {
+  flex: 1;
+}
+
+.defaulter-name {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.defaulter-roll {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.defaulter-risk {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.risk-High {
+  color: var(--accent-destructive);
+}
+
+.risk-Medium {
+  color: #f59e0b; /* Amber */
+}
+
+.risk-Low {
+  color: var(--accent-success);
+}
+
+@media (max-width: 1024px) {
+  .main-grid {
+    grid-template-columns: 1fr;
+  }
+}
