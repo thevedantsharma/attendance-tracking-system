@@ -19,26 +19,28 @@ const Login = () => {
     setError('');
   };
 
+
   const handleLogin = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await fetch('https://attendance-tracking-system-1cbj.onrender.com/api/auth/login', {
+      const res = await fetch('https://attendance-tracking-system-1cbj.onrender.com/api/auth/login', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          email: formData.email,
-          password: formData.password
+          email: email,
+          password: password
         })
       });
 
-      const data = await response.json();
+      const data = await res.json();
       console.log(data);
 
-    } catch (error) {
-      console.error(error);
+      alert("Login request sent");
+
+    } catch (err) {
+      console.error(err);
+      alert("Error occurred");
     }
   };
 
@@ -62,7 +64,7 @@ const Login = () => {
           <button type="button" className={`role-btn ${role === 'admin' ? 'active' : ''}`} onClick={() => handleRoleSelect('admin')}>Admin</button>
         </div>
 
-        <form className="login-form" onSubmit={handleSubmit}>
+        <form className="login-form" onSubmit={handleLogin}>
           {error && <div className="error-alert">{error}</div>}
           <div className="input-group">
             <Mail size={18} className="input-icon" />
