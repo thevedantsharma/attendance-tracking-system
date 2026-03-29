@@ -40,7 +40,7 @@ const Login = () => {
         alert("Login Successful 🔥");
 
         // 👉 optional: redirect
-        window.location.href = "/dashboard";
+        window.location.href = "/";
       } else {
         alert(data.message || "Login failed");
       }
