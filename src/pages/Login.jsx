@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './Login.css';
 import { Fingerprint, Lock, Mail } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
+import { Navigate } from 'react-router-dom';
 
 const Login = () => {
   const { login } = useAuth();
@@ -32,7 +33,7 @@ const Login = () => {
           password
         })
       });
-
+const navigate = useNavigate();
       const data = await res.json();
       console.log(data);
 
@@ -40,7 +41,7 @@ const Login = () => {
         alert("Login Successful 🔥");
 
         // 👉 optional: redirect
-        window.location.href = "/";
+        navigate= "/";
       } else {
         alert(data.message || "Login failed");
       }
