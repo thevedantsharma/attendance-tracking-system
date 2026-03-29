@@ -19,7 +19,9 @@ const Login = () => {
     setError('');
   };
 
-  const handleLogin = async () => {
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
     try {
       const response = await fetch('https://attendance-tracking-system-1cbj.onrender.com/api/auth/login', {
         method: 'POST',
@@ -27,8 +29,8 @@ const Login = () => {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          email,
-          password
+          email: formData.email,
+          password: formData.password
         })
       });
 
