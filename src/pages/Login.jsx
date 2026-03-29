@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Navigate } from 'react-router-dom';
 import './Login.css';
 import { Fingerprint, Lock, Mail } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
@@ -20,28 +21,27 @@ const Login = () => {
     setError('');
   };
 
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     try {
       const res = await fetch('https://attendance-tracking-system-1cbj.onrender.com/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          email,
-          password
-        })
+        body: JSON.stringify({ email, password })
       });
-const navigate = useNavigate();
+
       const data = await res.json();
-      console.log(data);
 
       if (data.success) {
         alert("Login Successful 🔥");
 
-        // 👉 optional: redirect
-        navigate= ("/");
+        login(data.user); // VERY IMPORTANT
+
+        navigate("/");
       } else {
         alert(data.message || "Login failed");
       }
@@ -49,6 +49,8 @@ const navigate = useNavigate();
     } catch (err) {
       console.error(err);
       alert("Error occurred");
+    } finally {
+      setLoading(false);
     }
   };
 
