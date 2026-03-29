@@ -28,15 +28,22 @@ const Login = () => {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          email: email,
-          password: password
+          email,
+          password
         })
       });
 
       const data = await res.json();
       console.log(data);
 
-      alert("Login request sent");
+      if (data.success) {
+        alert("Login Successful 🔥");
+
+        // 👉 optional: redirect
+        window.location.href = "/dashboard";
+      } else {
+        alert(data.message || "Login failed");
+      }
 
     } catch (err) {
       console.error(err);
