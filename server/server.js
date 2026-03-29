@@ -22,9 +22,11 @@ const PORT = process.env.PORT || 5000;
 
 // Security Middleware
 app.use(helmet());
+const cors = require('cors');
+
 app.use(cors({
-  origin: process.env.CLIENT_URL,
-  credentials: true,
+  origin: 'https://attendance-tracking-system-taupe.vercel.app',
+  credentials: true
 }));
 app.use(express.json());
 app.use(cookieParser());
