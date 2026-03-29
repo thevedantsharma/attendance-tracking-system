@@ -41,7 +41,7 @@ const navigate = useNavigate();
         alert("Login Successful 🔥");
 
         // 👉 optional: redirect
-        navigate= "/";
+        navigate= ("/");
       } else {
         alert(data.message || "Login failed");
       }
