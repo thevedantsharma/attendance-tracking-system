@@ -8,6 +8,16 @@ import dotenv from 'dotenv';
 import connectDB from './db.js';
 import { errorHandler } from './middleware/errorHandler.js';
 
+const cors = require('cors');
+
+app.use(cors({
+  origin: 'https://attendance-tracking-system-taupe.vercel.app',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  credentials: true
+}));
+
+app.options('*', cors()); // 🔥 THIS LINE FIXES YOUR ERROR
+
 // Route Imports
 import authRoutes from './routes/auth.js';
 import classRoutes from './routes/classes.js';
