@@ -1,5 +1,4 @@
-const BASE_URL = '/api';
-
+const BASE_URL = 'https://attendance-tracking-system-1cbj.onrender.com/api';
 export const apiFetch = async (endpoint, options = {}) => {
   const { headers, ...rest } = options;
   
