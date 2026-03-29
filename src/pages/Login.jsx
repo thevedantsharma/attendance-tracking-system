@@ -19,25 +19,24 @@ const Login = () => {
     setError('');
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError('');
-    setLoading(true);
+  const handleLogin = async () => {
     try {
-      const res = await fetch('/api/auth/login', {
+      const response = await fetch('https://attendance-tracking-system-1cbj.onrender.com/api/auth/login', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        credentials: 'include',
-        body: JSON.stringify({ email: email.trim(), password })
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          email,
+          password
+        })
       });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || (data.errors ? data.errors[0].msg : 'Login failed'));
-      
-      login(data.user);
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
+
+      const data = await response.json();
+      console.log(data);
+
+    } catch (error) {
+      console.error(error);
     }
   };
 
@@ -67,7 +66,7 @@ const Login = () => {
             <Mail size={18} className="input-icon" />
             <input type="email" placeholder="Email Address" required value={email} onChange={e => setEmail(e.target.value)} />
           </div>
-          
+
           <div className="input-group">
             <Lock size={18} className="input-icon" />
             <input type="password" placeholder="Password" required value={password} onChange={e => setPassword(e.target.value)} />
@@ -80,7 +79,7 @@ const Login = () => {
             <a href="#" className="forgot-password">Forgot Password?</a>
           </div>
 
-          <button type="submit" className="btn-primary" disabled={loading} style={{width: '100%'}}>
+          <button type="submit" className="btn-primary" disabled={loading} style={{ width: '100%' }}>
             {loading ? 'Signing In...' : 'Sign In'} <Fingerprint size={18} />
           </button>
         </form>
