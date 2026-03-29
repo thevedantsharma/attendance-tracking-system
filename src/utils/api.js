@@ -1,8 +1,8 @@
 const BASE_URL = 'https://attendance-tracking-system-1cbj.onrender.com/api';
+
 export const apiFetch = async (endpoint, options = {}) => {
   const { headers, ...rest } = options;
-  
-  // Always include credentials (cookies)
+
   const defaultOptions = {
     credentials: 'include',
     headers: {
@@ -12,12 +12,20 @@ export const apiFetch = async (endpoint, options = {}) => {
     ...rest,
   };
 
-  const response = await fetch(`${BASE_URL}${endpoint}`, defaultOptions);
-  
-  if (response.status === 401 && endpoint !== '/auth/login') {
-    // Possibly trigger refresh token logic or logout
-    // For now, let caller handle it or redirect to login
+  // 🔥 FORCE POST for login automatically
+  if (endpoint.includes('/auth/login') && !defaultOptions.method) {
+    defaultOptions.method = 'POST';
   }
 
-  return response;
+  const response = await fetch(`${BASE_URL}${endpoint}`, defaultOptions);
+
+  // 🔥 HANDLE HTML ERROR SAFELY
+  const text = await response.text();
+
+  try {
+    return JSON.parse(text);
+  } catch (err) {
+    console.error('Not JSON response:', text);
+    throw new Error('Server error - check backend');
+  }
 };
