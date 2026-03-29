@@ -1,9 +1,9 @@
+import { useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
-import { Navigate } from 'react-router-dom';
 import './Login.css';
 import { Fingerprint, Lock, Mail } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
-import { Navigate } from 'react-router-dom';
+
 
 const Login = () => {
   const { login } = useAuth();
