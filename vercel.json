@@ -3,6 +3,10 @@
         {
             "source": "/api/(.*)",
             "destination": "https://attendance-tracking-system-1cbj.onrender.com/api/$1"
+        },
+        {
+            "source": "/(.*)",
+            "destination": "/index.html"
         }
     ]
 }
