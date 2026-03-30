@@ -21,7 +21,7 @@ const Sidebar = ({ isOpen, setOpen }) => {
         <div className="brand-logo">A</div>
         <h1 className="brand-text">AttendX</h1>
       </div>
-      
+
       <div className="sidebar-servers">
         {/* Discord-style server icons stub */}
         <div className="server-icon active">S1</div>
@@ -32,10 +32,10 @@ const Sidebar = ({ isOpen, setOpen }) => {
 
       <nav className="sidebar-nav">
         <p className="nav-group-title">MAIN MENU</p>
-        
+
         {navItems.map((item) => (
-          <NavLink 
-            key={item.name} 
+          <NavLink
+            key={item.name}
             to={item.path}
             className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
             onClick={() => setOpen(false)} // close on mobile after navigation
