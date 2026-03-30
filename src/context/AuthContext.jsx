@@ -7,13 +7,22 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Attempt to load user from localStorage if it exists (for initial load)
+  try {
     const storedUser = localStorage.getItem('user');
     if (storedUser) {
-      setUser(JSON.parse(storedUser));
+      const parsed = JSON.parse(storedUser);
+      if (parsed && parsed.role && parsed.email) {
+        setUser(parsed);
+      } else {
+        localStorage.removeItem('user');
+      }
     }
+  } catch {
+    localStorage.removeItem('user');
+  } finally {
     setLoading(false);
-  }, []);
+  }
+}, []);
 
   const login = (userData) => {
     setUser(userData);

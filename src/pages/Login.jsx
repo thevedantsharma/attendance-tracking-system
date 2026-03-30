@@ -37,12 +37,11 @@ const Login = () => {
       const data = await res.json();
 
       if (data.success) {
-        alert("Login Successful 🔥");
-
-        login(data.user); // VERY IMPORTANT
-
+        login(data.user);
+        if (data.token) localStorage.setItem('token', data.token);
         navigate("/");
-      } else {
+      }
+      else {
         alert(data.message || "Login failed");
       }
 
